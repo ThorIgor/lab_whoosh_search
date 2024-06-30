@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whoosh Search App</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <h3>Add book</h3>
+        <label for="title">Book title:</label>
+        <input type="text" id="title" name="title" required><br>
+        <label for="Description">Description:</label>
+        <input type="text" id="description" name="description" required><br>
+        <button type="submit">Add Book</button>
+    </form>
+    <form action="/search" method="post">
+        <h3>Search book</h3>
+        <label for="query">Query:</label>
+        <input type="text" id="query" name="query" required><br>
+        <button type="submit">Search</button>
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    {% if results %}
+        <h3>Search Results</h3>
+        <ul>
+        {% for result in results %}
+            <li>{{result['title'] }}: {{result['description']}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
